@@ -1,0 +1,50 @@
+<!-- ===========================================================
+Завдання 1.
+-1-Створити модуль User. Із змінною name та age.
+-2-Створити методи функції виводу віку, та виводу ім’я.
+-3-Також задати функцію встановлення ім’я.
+-4-Вивести функції алертом.
+<!-- ===========================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+
+<body>
+    <script>
+        var user = (function () {
+            var name;
+            var age = 22;
+
+            function getName() {
+                return alert("User name: " + name);
+            }
+
+            function setName(newName) { // сеттери
+                name = newName;
+            }
+            
+            function getAge() {
+                return alert("User age: "+age);
+            }
+
+            return {
+                getName: getName,
+                setName: setName,
+                getAge: getAge
+            };
+        })();
+
+        console.log('user - ', user);
+    
+        user.setName("Mykola");
+        user.getName();
+        user.getAge();
+    </script>
+</body>
+
+</html>

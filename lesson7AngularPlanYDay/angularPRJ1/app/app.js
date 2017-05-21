@@ -1,0 +1,1 @@
+angular.module("myApp", ["Controllers", "Services"])     //first param -name of app,   ", []"  - означає що ми створюємо новий модуль

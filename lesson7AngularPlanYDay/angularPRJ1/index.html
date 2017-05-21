@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>angularPRJ1</title>
+</head>
+<body>
+    <h2 id="topText">Plan your day!</h2>
+    <div class="container">
+        <div class="row">
+    
+            <div class="main" ng-controller="MainCtrl">
+                <div class="panel">
+                    <div class="input-group">
+                      <input type="text" class="form-control" ng-model="newTask">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="button" value="add" ng-click="addNewTask(newTask)">Add</button>
+                        </span>
+                    </div>
+                </div>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <th class="col-sm-1">Edit</th>
+                        <th class="col-sm-4">Task</th>
+                        <th class="col-sm-1">Check</th>
+                        <th class="col-sm-3">Done/In progress</th>
+                        <th class="col-sm-1">Delete</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="key in tasks">
+                            <td><input class="btn btn-info" type="button" value="Edit" ng-click="editBtn($index)"</td>
+                            <td>{{key.content}}</td>
+                            <td><input id="myCheckBox" type="checkbox" ng-model="key.state"></td>
+                            <td ng-class="{'red': key.state == 'false', 'green': key.state == 'true'}">
+                                {{key.state ? "Done" : "In progress"}}
+                            </td>
+                            <td><input class="btn btn-danger" type="button" value="Delete" ng-click="deleteTask($index)"></td>
+                        </tr>
+                        <tr ng-show="toggle">
+                            <td colspan="3">
+                                <div class="input-group" style="width: 100%">
+                                  <input type="text" class="form-control" ng-model="edit">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-success" type="button" value="Save" ng-click="save(edit)">Save</button>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+            
+        </div>
+        <hr>
+    </div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+    <script src="app/services/main.service.js"></script>
+    <script src="app/controllers/main.controller.js"></script>
+    <script src="app/app.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    
+</body>
+</html>
